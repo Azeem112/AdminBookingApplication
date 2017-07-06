@@ -1,0 +1,98 @@
+﻿@model BookingApplication.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerBusinessDetail.SRIET)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerBusinessDetail.SRIET)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerContact.BussinessEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerContact.BussinessEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerDetail.BussinessName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerDetail.BussinessName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerGallery.Image1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerGallery.Image1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerLocation.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerLocation.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerRegion.TimeZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerRegion.TimeZone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerSM.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerSM.Id)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CustomerType.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CustomerType.CompanyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkingTime.Day)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkingTime.Day)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

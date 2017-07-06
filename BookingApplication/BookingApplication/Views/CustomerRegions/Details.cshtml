@@ -1,0 +1,58 @@
+﻿@model BookingApplication.Models.CustomerRegion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CustomerRegion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeZone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeZone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateFormate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateFormate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TimeFormate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TimeFormate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Currency.CurrencyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Currency.CurrencyName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

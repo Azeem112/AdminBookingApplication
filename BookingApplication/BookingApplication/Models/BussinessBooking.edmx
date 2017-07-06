@@ -1,0 +1,1734 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BussinessBookingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="AgencyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="CustomerID" Type="int" />
+        </EntityType>
+        <EntityType Name="BusinessCatageory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="BusinessSubCatageory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="BussinessCatageoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Alpha1" Type="nvarchar" MaxLength="50" />
+          <Property Name="Alpha2" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CurrencyName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customer_SubCatageory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerID" Type="int" />
+          <Property Name="SubCatageoryId" Type="int" />
+        </EntityType>
+        <EntityType Name="CustomerBusinessDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SRIET" Type="nvarchar" MaxLength="50" />
+          <Property Name="VatNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="APE" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nchar" MaxLength="10" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CustomerContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Telephone1" Type="int" />
+          <Property Name="Telephone2" Type="int" />
+          <Property Name="Fax" Type="int" />
+          <Property Name="BussinessEmail" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CustomerDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BussinessName" Type="nvarchar" MaxLength="50" />
+          <Property Name="BussinessWebsite" Type="nvarchar" MaxLength="50" />
+          <Property Name="BusinessCatageoryId" Type="int" />
+          <Property Name="SubCatageoryNo" Type="int" />
+        </EntityType>
+        <EntityType Name="CustomerGallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image1" Type="nvarchar" MaxLength="20" />
+          <Property Name="Image2" Type="nvarchar" MaxLength="20" />
+          <Property Name="Image3" Type="nvarchar" MaxLength="20" />
+          <Property Name="Image4" Type="nvarchar" MaxLength="20" />
+          <Property Name="Image5" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="CustomerLocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="50" />
+          <Property Name="ZipCode" Type="int" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="Latitude" Type="float" />
+          <Property Name="Longitude" Type="float" />
+          <Property Name="IntervensionZone" Type="bit" />
+          <Property Name="Radius" Type="float" />
+        </EntityType>
+        <EntityType Name="CustomerRegion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryId" Type="int" />
+          <Property Name="CurrencyId" Type="int" />
+          <Property Name="TimeZone" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateFormate" Type="nvarchar" MaxLength="50" />
+          <Property Name="TimeFormate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DetailId" Type="int" />
+          <Property Name="LocationId" Type="int" />
+          <Property Name="ContactId" Type="int" />
+          <Property Name="BussinessID" Type="int" />
+          <Property Name="GalleryID" Type="int" />
+          <Property Name="RegionID" Type="int" />
+          <Property Name="TypeID" Type="int" />
+          <Property Name="SmsID" Type="int" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="WorkingID" Type="int" />
+        </EntityType>
+        <EntityType Name="CustomerSMS">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PackageID" Type="int" />
+          <Property Name="RemainingSMS" Type="int" />
+        </EntityType>
+        <EntityType Name="CustomerType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SingleorMulti" Type="nvarchar" MaxLength="10" />
+          <Property Name="MultiNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NickName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="128" />
+          <Property Name="SMSNumber" Type="int" />
+          <Property Name="BookingSMS" Type="bit" />
+          <Property Name="BookingMail" Type="bit" />
+          <Property Name="ThaiMessage" Type="bit" />
+          <Property Name="CalliforniaMessage" Type="bit" />
+          <Property Name="WorkingPlace" Type="nvarchar" MaxLength="50" />
+          <Property Name="AgencyCheck1" Type="bit" />
+          <Property Name="AgencyCheck2" Type="bit" />
+          <Property Name="WorkingId" Type="int" />
+          <Property Name="CelenderSync" Type="bit" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="Expire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="From" Type="time" Precision="7" />
+          <Property Name="To" Type="time" Precision="7" />
+          <Property Name="Every" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="GiftVoucher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Discount" Type="float" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Sku" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="RedmeeOnline" Type="bit" />
+          <Property Name="Voided" Type="bit" />
+          <Property Name="ExpireId" Type="int" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="InvoiceDate" Type="datetime" />
+          <Property Name="DueDate" Type="datetime" />
+          <Property Name="Ammount" Type="float" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+          <Property Name="Tax" Type="float" />
+          <Property Name="CustomerID" Type="int" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="Vat" Type="float" />
+          <Property Name="Price_W/O_Vat" Type="float" />
+          <Property Name="Price_W/_Vat" Type="float" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Service_Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceID" Type="int" />
+          <Property Name="GroupID" Type="int" />
+        </EntityType>
+        <EntityType Name="ServiceGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Social">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Twitter" Type="nvarchar" MaxLength="50" />
+          <Property Name="Facebook" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="128" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" />
+          <Property Name="Role" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="128" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="WorkingTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" MaxLength="50" />
+          <Property Name="isoff" Type="bit" />
+          <Property Name="StartTime" Type="datetime" />
+          <Property Name="EndTime" Type="datetime" />
+          <Property Name="LunchFrom" Type="datetime" />
+          <Property Name="LunchToo" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Agency_Customer">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Agency" Type="Self.Agency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agency">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessSubCatageory_BusinessCatageory">
+          <End Role="BusinessCatageory" Type="Self.BusinessCatageory" Multiplicity="0..1" />
+          <End Role="BusinessSubCatageory" Type="Self.BusinessSubCatageory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessCatageory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BusinessSubCatageory">
+              <PropertyRef Name="BussinessCatageoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_SubCatageory_Customer">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Customer_SubCatageory" Type="Self.Customer_SubCatageory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer_SubCatageory">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_SubCatageory_SubCatageory">
+          <End Role="BusinessSubCatageory" Type="Self.BusinessSubCatageory" Multiplicity="0..1" />
+          <End Role="Customer_SubCatageory" Type="Self.Customer_SubCatageory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessSubCatageory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer_SubCatageory">
+              <PropertyRef Name="SubCatageoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerDetail_BusinessCatageory">
+          <End Role="BusinessCatageory" Type="Self.BusinessCatageory" Multiplicity="0..1" />
+          <End Role="CustomerDetail" Type="Self.CustomerDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessCatageory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerDetail">
+              <PropertyRef Name="BusinessCatageoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerRegion_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="CustomerRegion" Type="Self.CustomerRegion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerRegion">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerRegion_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="CustomerRegion" Type="Self.CustomerRegion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerRegion">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerBusinessDetail">
+          <End Role="CustomerBusinessDetail" Type="Self.CustomerBusinessDetail" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerBusinessDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="BussinessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerContact">
+          <End Role="CustomerContact" Type="Self.CustomerContact" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerContact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerDetail">
+          <End Role="CustomerDetail" Type="Self.CustomerDetail" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="DetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerGallery">
+          <End Role="CustomerGallery" Type="Self.CustomerGallery" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerGallery">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="GalleryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerLocation">
+          <End Role="CustomerLocation" Type="Self.CustomerLocation" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerLocation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerRegion">
+          <End Role="CustomerRegion" Type="Self.CustomerRegion" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerRegion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerSMS">
+          <End Role="CustomerSMS" Type="Self.CustomerSMS" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerSMS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="SmsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerType">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Work">
+          <End Role="WorkingTime" Type="Self.WorkingTime" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkingTime">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="WorkingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Working">
+          <End Role="WorkingTime" Type="Self.WorkingTime" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkingTime">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="WorkingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GiftVoucher_Expire">
+          <End Role="Expire" Type="Self.Expire" Multiplicity="0..1" />
+          <End Role="GiftVoucher" Type="Self.GiftVoucher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GiftVoucher">
+              <PropertyRef Name="ExpireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Customer">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_Group_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="Service_Group" Type="Self.Service_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service_Group">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_Group_ServiceGroup">
+          <End Role="ServiceGroup" Type="Self.ServiceGroup" Multiplicity="0..1" />
+          <End Role="Service_Group" Type="Self.Service_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service_Group">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BussinessBookingModelStoreContainer">
+          <EntitySet Name="Agency" EntityType="Self.Agency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BusinessCatageory" EntityType="Self.BusinessCatageory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BusinessSubCatageory" EntityType="Self.BusinessSubCatageory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currency" EntityType="Self.Currency" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer_SubCatageory" EntityType="Self.Customer_SubCatageory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerBusinessDetail" EntityType="Self.CustomerBusinessDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerContact" EntityType="Self.CustomerContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerDetail" EntityType="Self.CustomerDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerGallery" EntityType="Self.CustomerGallery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerLocation" EntityType="Self.CustomerLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerRegion" EntityType="Self.CustomerRegion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerSMS" EntityType="Self.CustomerSMS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerType" EntityType="Self.CustomerType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Expire" EntityType="Self.Expire" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GiftVoucher" EntityType="Self.GiftVoucher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Invoice" EntityType="Self.Invoice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Item" EntityType="Self.Item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service" EntityType="Self.Service" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Service_Group" EntityType="Self.Service_Group" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServiceGroup" EntityType="Self.ServiceGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Social" EntityType="Self.Social" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WorkingTime" EntityType="Self.WorkingTime" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Agency_Customer" Association="Self.FK_Agency_Customer">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Agency" EntitySet="Agency" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessSubCatageory_BusinessCatageory" Association="Self.FK_BusinessSubCatageory_BusinessCatageory">
+            <End Role="BusinessCatageory" EntitySet="BusinessCatageory" />
+            <End Role="BusinessSubCatageory" EntitySet="BusinessSubCatageory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_SubCatageory_Customer" Association="Self.FK_Customer_SubCatageory_Customer">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Customer_SubCatageory" EntitySet="Customer_SubCatageory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_SubCatageory_SubCatageory" Association="Self.FK_Customer_SubCatageory_SubCatageory">
+            <End Role="BusinessSubCatageory" EntitySet="BusinessSubCatageory" />
+            <End Role="Customer_SubCatageory" EntitySet="Customer_SubCatageory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerDetail_BusinessCatageory" Association="Self.FK_CustomerDetail_BusinessCatageory">
+            <End Role="BusinessCatageory" EntitySet="BusinessCatageory" />
+            <End Role="CustomerDetail" EntitySet="CustomerDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerRegion_Country" Association="Self.FK_CustomerRegion_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="CustomerRegion" EntitySet="CustomerRegion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerRegion_Currency" Association="Self.FK_CustomerRegion_Currency">
+            <End Role="Currency" EntitySet="Currency" />
+            <End Role="CustomerRegion" EntitySet="CustomerRegion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerBusinessDetail" Association="Self.FK_Customers_CustomerBusinessDetail">
+            <End Role="CustomerBusinessDetail" EntitySet="CustomerBusinessDetail" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerContact" Association="Self.FK_Customers_CustomerContact">
+            <End Role="CustomerContact" EntitySet="CustomerContact" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerDetail" Association="Self.FK_Customers_CustomerDetail">
+            <End Role="CustomerDetail" EntitySet="CustomerDetail" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerGallery" Association="Self.FK_Customers_CustomerGallery">
+            <End Role="CustomerGallery" EntitySet="CustomerGallery" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerLocation" Association="Self.FK_Customers_CustomerLocation">
+            <End Role="CustomerLocation" EntitySet="CustomerLocation" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerRegion" Association="Self.FK_Customers_CustomerRegion">
+            <End Role="CustomerRegion" EntitySet="CustomerRegion" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerSMS" Association="Self.FK_Customers_CustomerSMS">
+            <End Role="CustomerSMS" EntitySet="CustomerSMS" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerType" Association="Self.FK_Customers_CustomerType">
+            <End Role="CustomerType" EntitySet="CustomerType" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_User" Association="Self.FK_Customers_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Work" Association="Self.FK_Customers_Work">
+            <End Role="WorkingTime" EntitySet="WorkingTime" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_User" Association="Self.FK_Employee_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Working" Association="Self.FK_Employee_Working">
+            <End Role="WorkingTime" EntitySet="WorkingTime" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GiftVoucher_Expire" Association="Self.FK_GiftVoucher_Expire">
+            <End Role="Expire" EntitySet="Expire" />
+            <End Role="GiftVoucher" EntitySet="GiftVoucher" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Customer" Association="Self.FK_Invoice_Customer">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Invoice" EntitySet="Invoice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_Group_Service" Association="Self.FK_Service_Group_Service">
+            <End Role="Service" EntitySet="Service" />
+            <End Role="Service_Group" EntitySet="Service_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_Group_ServiceGroup" Association="Self.FK_Service_Group_ServiceGroup">
+            <End Role="ServiceGroup" EntitySet="ServiceGroup" />
+            <End Role="Service_Group" EntitySet="Service_Group" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BussinessBookingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Agency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="AgencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerID" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Agency_Customer" FromRole="Agency" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="BusinessCatageory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BusinessSubCatageories" Relationship="Self.FK_BusinessSubCatageory_BusinessCatageory" FromRole="BusinessCatageory" ToRole="BusinessSubCatageory" />
+          <NavigationProperty Name="CustomerDetails" Relationship="Self.FK_CustomerDetail_BusinessCatageory" FromRole="BusinessCatageory" ToRole="CustomerDetail" />
+        </EntityType>
+        <EntityType Name="BusinessSubCatageory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BussinessCatageoryId" Type="Int32" />
+          <NavigationProperty Name="BusinessCatageory" Relationship="Self.FK_BusinessSubCatageory_BusinessCatageory" FromRole="BusinessSubCatageory" ToRole="BusinessCatageory" />
+          <NavigationProperty Name="Customer_SubCatageory" Relationship="Self.FK_Customer_SubCatageory_SubCatageory" FromRole="BusinessSubCatageory" ToRole="Customer_SubCatageory" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Alpha1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Alpha2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CustomerRegions" Relationship="Self.FK_CustomerRegion_Country" FromRole="Country" ToRole="CustomerRegion" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CurrencyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CustomerRegions" Relationship="Self.FK_CustomerRegion_Currency" FromRole="Currency" ToRole="CustomerRegion" />
+        </EntityType>
+        <EntityType Name="Customer_SubCatageory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerID" Type="Int32" />
+          <Property Name="SubCatageoryId" Type="Int32" />
+          <NavigationProperty Name="BusinessSubCatageory" Relationship="Self.FK_Customer_SubCatageory_SubCatageory" FromRole="Customer_SubCatageory" ToRole="BusinessSubCatageory" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_SubCatageory_Customer" FromRole="Customer_SubCatageory" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="CustomerBusinessDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SRIET" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="VatNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="APE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_CustomerBusinessDetail" FromRole="CustomerBusinessDetail" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="CustomerContact">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Telephone1" Type="Int32" />
+          <Property Name="Telephone2" Type="Int32" />
+          <Property Name="Fax" Type="Int32" />
+          <Property Name="BussinessEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_CustomerContact" FromRole="CustomerContact" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="CustomerDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BussinessName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BussinessWebsite" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BusinessCatageoryId" Type="Int32" />
+          <Property Name="SubCatageoryNo" Type="Int32" />
+          <NavigationProperty Name="BusinessCatageory" Relationship="Self.FK_CustomerDetail_BusinessCatageory" FromRole="CustomerDetail" ToRole="BusinessCatageory" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_CustomerDetail" FromRole="CustomerDetail" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="CustomerGallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image1" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Image2" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Image3" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Image4" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Image5" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_CustomerGallery" FromRole="CustomerGallery" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="CustomerLocation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ZipCode" Type="Int32" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="Latitude" Type="Double" />
+          <Property Name="Longitude" Type="Double" />
+          <Property Name="IntervensionZone" Type="Boolean" />
+          <Property Name="Radius" Type="Double" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_CustomerLocation" FromRole="CustomerLocation" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="CustomerRegion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryId" Type="Int32" />
+          <Property Name="CurrencyId" Type="Int32" />
+          <Property Name="TimeZone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateFormate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TimeFormate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_CustomerRegion_Country" FromRole="CustomerRegion" ToRole="Country" />
+          <NavigationProperty Name="Currency" Relationship="Self.FK_CustomerRegion_Currency" FromRole="CustomerRegion" ToRole="Currency" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_CustomerRegion" FromRole="CustomerRegion" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DetailId" Type="Int32" />
+          <Property Name="LocationId" Type="Int32" />
+          <Property Name="ContactId" Type="Int32" />
+          <Property Name="BussinessID" Type="Int32" />
+          <Property Name="GalleryID" Type="Int32" />
+          <Property Name="RegionID" Type="Int32" />
+          <Property Name="TypeID" Type="Int32" />
+          <Property Name="SmsID" Type="Int32" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="WorkingID" Type="Int32" />
+          <NavigationProperty Name="Agencies" Relationship="Self.FK_Agency_Customer" FromRole="Customers" ToRole="Agency" />
+          <NavigationProperty Name="Customer_SubCatageory" Relationship="Self.FK_Customer_SubCatageory_Customer" FromRole="Customers" ToRole="Customer_SubCatageory" />
+          <NavigationProperty Name="CustomerBusinessDetail" Relationship="Self.FK_Customers_CustomerBusinessDetail" FromRole="Customers" ToRole="CustomerBusinessDetail" />
+          <NavigationProperty Name="CustomerContact" Relationship="Self.FK_Customers_CustomerContact" FromRole="Customers" ToRole="CustomerContact" />
+          <NavigationProperty Name="CustomerDetail" Relationship="Self.FK_Customers_CustomerDetail" FromRole="Customers" ToRole="CustomerDetail" />
+          <NavigationProperty Name="CustomerGallery" Relationship="Self.FK_Customers_CustomerGallery" FromRole="Customers" ToRole="CustomerGallery" />
+          <NavigationProperty Name="CustomerLocation" Relationship="Self.FK_Customers_CustomerLocation" FromRole="Customers" ToRole="CustomerLocation" />
+          <NavigationProperty Name="CustomerRegion" Relationship="Self.FK_Customers_CustomerRegion" FromRole="Customers" ToRole="CustomerRegion" />
+          <NavigationProperty Name="CustomerSM" Relationship="Self.FK_Customers_CustomerSMS" FromRole="Customers" ToRole="CustomerSMS" />
+          <NavigationProperty Name="CustomerType" Relationship="Self.FK_Customers_CustomerType" FromRole="Customers" ToRole="CustomerType" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Customers_User" FromRole="Customers" ToRole="User" />
+          <NavigationProperty Name="WorkingTime" Relationship="Self.FK_Customers_Work" FromRole="Customers" ToRole="WorkingTime" />
+          <NavigationProperty Name="Invoices" Relationship="Self.FK_Invoice_Customer" FromRole="Customers" ToRole="Invoice" />
+        </EntityType>
+        <EntityType Name="CustomerSM">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PackageID" Type="Int32" />
+          <Property Name="RemainingSMS" Type="Int32" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_CustomerSMS" FromRole="CustomerSMS" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="CustomerType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SingleorMulti" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MultiNumber" Type="Int32" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_CustomerType" FromRole="CustomerType" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NickName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SMSNumber" Type="Int32" />
+          <Property Name="BookingSMS" Type="Boolean" />
+          <Property Name="BookingMail" Type="Boolean" />
+          <Property Name="ThaiMessage" Type="Boolean" />
+          <Property Name="CalliforniaMessage" Type="Boolean" />
+          <Property Name="WorkingPlace" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AgencyCheck1" Type="Boolean" />
+          <Property Name="AgencyCheck2" Type="Boolean" />
+          <Property Name="WorkingId" Type="Int32" />
+          <Property Name="CelenderSync" Type="Boolean" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Employee_User" FromRole="Employee" ToRole="User" />
+          <NavigationProperty Name="WorkingTime" Relationship="Self.FK_Employee_Working" FromRole="Employee" ToRole="WorkingTime" />
+        </EntityType>
+        <EntityType Name="Expire">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="From" Type="Time" Precision="7" />
+          <Property Name="To" Type="Time" Precision="7" />
+          <Property Name="Every" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="GiftVouchers" Relationship="Self.FK_GiftVoucher_Expire" FromRole="Expire" ToRole="GiftVoucher" />
+        </EntityType>
+        <EntityType Name="GiftVoucher">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Discount" Type="Double" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Sku" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RedmeeOnline" Type="Boolean" />
+          <Property Name="Voided" Type="Boolean" />
+          <Property Name="ExpireId" Type="Int32" />
+          <NavigationProperty Name="Expire" Relationship="Self.FK_GiftVoucher_Expire" FromRole="GiftVoucher" ToRole="Expire" />
+        </EntityType>
+        <EntityType Name="Invoice">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="InvoiceDate" Type="DateTime" Precision="3" />
+          <Property Name="DueDate" Type="DateTime" Precision="3" />
+          <Property Name="Ammount" Type="Double" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Tax" Type="Double" />
+          <Property Name="CustomerID" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Invoice_Customer" FromRole="Invoice" ToRole="Customers" />
+        </EntityType>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Vat" Type="Double" />
+          <Property Name="Price_W_O_Vat" Type="Double" />
+          <Property Name="Price_W__Vat" Type="Double" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Service_Group" Relationship="Self.FK_Service_Group_Service" FromRole="Service" ToRole="Service_Group" />
+        </EntityType>
+        <EntityType Name="Service_Group">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceID" Type="Int32" />
+          <Property Name="GroupID" Type="Int32" />
+          <NavigationProperty Name="Service" Relationship="Self.FK_Service_Group_Service" FromRole="Service_Group" ToRole="Service" />
+          <NavigationProperty Name="ServiceGroup" Relationship="Self.FK_Service_Group_ServiceGroup" FromRole="Service_Group" ToRole="ServiceGroup" />
+        </EntityType>
+        <EntityType Name="ServiceGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Service_Group" Relationship="Self.FK_Service_Group_ServiceGroup" FromRole="ServiceGroup" ToRole="Service_Group" />
+        </EntityType>
+        <EntityType Name="Social">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Twitter" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Facebook" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_User" FromRole="User" ToRole="Customers" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_User" FromRole="User" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="WorkingTime">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Day" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="isoff" Type="Boolean" />
+          <Property Name="StartTime" Type="DateTime" Precision="3" />
+          <Property Name="EndTime" Type="DateTime" Precision="3" />
+          <Property Name="LunchFrom" Type="DateTime" Precision="3" />
+          <Property Name="LunchToo" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_Work" FromRole="WorkingTime" ToRole="Customers" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK_Employee_Working" FromRole="WorkingTime" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_Agency_Customer">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Agency" Type="Self.Agency" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Agency">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusinessSubCatageory_BusinessCatageory">
+          <End Role="BusinessCatageory" Type="Self.BusinessCatageory" Multiplicity="0..1" />
+          <End Role="BusinessSubCatageory" Type="Self.BusinessSubCatageory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessCatageory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BusinessSubCatageory">
+              <PropertyRef Name="BussinessCatageoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerDetail_BusinessCatageory">
+          <End Role="BusinessCatageory" Type="Self.BusinessCatageory" Multiplicity="0..1" />
+          <End Role="CustomerDetail" Type="Self.CustomerDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessCatageory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerDetail">
+              <PropertyRef Name="BusinessCatageoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_SubCatageory_SubCatageory">
+          <End Role="BusinessSubCatageory" Type="Self.BusinessSubCatageory" Multiplicity="0..1" />
+          <End Role="Customer_SubCatageory" Type="Self.Customer_SubCatageory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BusinessSubCatageory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer_SubCatageory">
+              <PropertyRef Name="SubCatageoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerRegion_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="CustomerRegion" Type="Self.CustomerRegion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerRegion">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CustomerRegion_Currency">
+          <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+          <End Role="CustomerRegion" Type="Self.CustomerRegion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Currency">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CustomerRegion">
+              <PropertyRef Name="CurrencyId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_SubCatageory_Customer">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Customer_SubCatageory" Type="Self.Customer_SubCatageory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customer_SubCatageory">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerBusinessDetail">
+          <End Role="CustomerBusinessDetail" Type="Self.CustomerBusinessDetail" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerBusinessDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="BussinessID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerContact">
+          <End Role="CustomerContact" Type="Self.CustomerContact" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerContact">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="ContactId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerDetail">
+          <End Role="CustomerDetail" Type="Self.CustomerDetail" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="DetailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerGallery">
+          <End Role="CustomerGallery" Type="Self.CustomerGallery" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerGallery">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="GalleryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerLocation">
+          <End Role="CustomerLocation" Type="Self.CustomerLocation" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerLocation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="LocationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerRegion">
+          <End Role="CustomerRegion" Type="Self.CustomerRegion" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerRegion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="RegionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerSMS">
+          <End Role="CustomerSMS" Type="Self.CustomerSM" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerSMS">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="SmsID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerType">
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_Work">
+          <End Role="WorkingTime" Type="Self.WorkingTime" Multiplicity="0..1" />
+          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkingTime">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Customers">
+              <PropertyRef Name="WorkingID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Invoice_Customer">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Invoice" Type="Self.Invoice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Invoice">
+              <PropertyRef Name="CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Employee_Working">
+          <End Role="WorkingTime" Type="Self.WorkingTime" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WorkingTime">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="WorkingId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GiftVoucher_Expire">
+          <End Role="Expire" Type="Self.Expire" Multiplicity="0..1" />
+          <End Role="GiftVoucher" Type="Self.GiftVoucher" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Expire">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="GiftVoucher">
+              <PropertyRef Name="ExpireId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_Group_Service">
+          <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+          <End Role="Service_Group" Type="Self.Service_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Service">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service_Group">
+              <PropertyRef Name="ServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Service_Group_ServiceGroup">
+          <End Role="ServiceGroup" Type="Self.ServiceGroup" Multiplicity="0..1" />
+          <End Role="Service_Group" Type="Self.Service_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ServiceGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Service_Group">
+              <PropertyRef Name="GroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BussinessBookingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Agencies" EntityType="Self.Agency" />
+          <EntitySet Name="BusinessCatageories" EntityType="Self.BusinessCatageory" />
+          <EntitySet Name="BusinessSubCatageories" EntityType="Self.BusinessSubCatageory" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Currencies" EntityType="Self.Currency" />
+          <EntitySet Name="Customer_SubCatageory" EntityType="Self.Customer_SubCatageory" />
+          <EntitySet Name="CustomerBusinessDetails" EntityType="Self.CustomerBusinessDetail" />
+          <EntitySet Name="CustomerContacts" EntityType="Self.CustomerContact" />
+          <EntitySet Name="CustomerDetails" EntityType="Self.CustomerDetail" />
+          <EntitySet Name="CustomerGalleries" EntityType="Self.CustomerGallery" />
+          <EntitySet Name="CustomerLocations" EntityType="Self.CustomerLocation" />
+          <EntitySet Name="CustomerRegions" EntityType="Self.CustomerRegion" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustomerSMS" EntityType="Self.CustomerSM" />
+          <EntitySet Name="CustomerTypes" EntityType="Self.CustomerType" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Expires" EntityType="Self.Expire" />
+          <EntitySet Name="GiftVouchers" EntityType="Self.GiftVoucher" />
+          <EntitySet Name="Invoices" EntityType="Self.Invoice" />
+          <EntitySet Name="Items" EntityType="Self.Item" />
+          <EntitySet Name="Services" EntityType="Self.Service" />
+          <EntitySet Name="Service_Group" EntityType="Self.Service_Group" />
+          <EntitySet Name="ServiceGroups" EntityType="Self.ServiceGroup" />
+          <EntitySet Name="Socials" EntityType="Self.Social" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="WorkingTimes" EntityType="Self.WorkingTime" />
+          <AssociationSet Name="FK_Agency_Customer" Association="Self.FK_Agency_Customer">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Agency" EntitySet="Agencies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusinessSubCatageory_BusinessCatageory" Association="Self.FK_BusinessSubCatageory_BusinessCatageory">
+            <End Role="BusinessCatageory" EntitySet="BusinessCatageories" />
+            <End Role="BusinessSubCatageory" EntitySet="BusinessSubCatageories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerDetail_BusinessCatageory" Association="Self.FK_CustomerDetail_BusinessCatageory">
+            <End Role="BusinessCatageory" EntitySet="BusinessCatageories" />
+            <End Role="CustomerDetail" EntitySet="CustomerDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_SubCatageory_SubCatageory" Association="Self.FK_Customer_SubCatageory_SubCatageory">
+            <End Role="BusinessSubCatageory" EntitySet="BusinessSubCatageories" />
+            <End Role="Customer_SubCatageory" EntitySet="Customer_SubCatageory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerRegion_Country" Association="Self.FK_CustomerRegion_Country">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="CustomerRegion" EntitySet="CustomerRegions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CustomerRegion_Currency" Association="Self.FK_CustomerRegion_Currency">
+            <End Role="Currency" EntitySet="Currencies" />
+            <End Role="CustomerRegion" EntitySet="CustomerRegions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_SubCatageory_Customer" Association="Self.FK_Customer_SubCatageory_Customer">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Customer_SubCatageory" EntitySet="Customer_SubCatageory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerBusinessDetail" Association="Self.FK_Customers_CustomerBusinessDetail">
+            <End Role="CustomerBusinessDetail" EntitySet="CustomerBusinessDetails" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerContact" Association="Self.FK_Customers_CustomerContact">
+            <End Role="CustomerContact" EntitySet="CustomerContacts" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerDetail" Association="Self.FK_Customers_CustomerDetail">
+            <End Role="CustomerDetail" EntitySet="CustomerDetails" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerGallery" Association="Self.FK_Customers_CustomerGallery">
+            <End Role="CustomerGallery" EntitySet="CustomerGalleries" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerLocation" Association="Self.FK_Customers_CustomerLocation">
+            <End Role="CustomerLocation" EntitySet="CustomerLocations" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerRegion" Association="Self.FK_Customers_CustomerRegion">
+            <End Role="CustomerRegion" EntitySet="CustomerRegions" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerSMS" Association="Self.FK_Customers_CustomerSMS">
+            <End Role="CustomerSMS" EntitySet="CustomerSMS" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerType" Association="Self.FK_Customers_CustomerType">
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_User" Association="Self.FK_Customers_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_Work" Association="Self.FK_Customers_Work">
+            <End Role="WorkingTime" EntitySet="WorkingTimes" />
+            <End Role="Customers" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Invoice_Customer" Association="Self.FK_Invoice_Customer">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Invoice" EntitySet="Invoices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_User" Association="Self.FK_Employee_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Working" Association="Self.FK_Employee_Working">
+            <End Role="WorkingTime" EntitySet="WorkingTimes" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GiftVoucher_Expire" Association="Self.FK_GiftVoucher_Expire">
+            <End Role="Expire" EntitySet="Expires" />
+            <End Role="GiftVoucher" EntitySet="GiftVouchers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_Group_Service" Association="Self.FK_Service_Group_Service">
+            <End Role="Service" EntitySet="Services" />
+            <End Role="Service_Group" EntitySet="Service_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Service_Group_ServiceGroup" Association="Self.FK_Service_Group_ServiceGroup">
+            <End Role="ServiceGroup" EntitySet="ServiceGroups" />
+            <End Role="Service_Group" EntitySet="Service_Group" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BussinessBookingModelStoreContainer" CdmEntityContainer="BussinessBookingEntities">
+          <EntitySetMapping Name="Agencies">
+            <EntityTypeMapping TypeName="BussinessBookingModel.Agency">
+              <MappingFragment StoreEntitySet="Agency">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AgencyName" ColumnName="AgencyName" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessCatageories">
+            <EntityTypeMapping TypeName="BussinessBookingModel.BusinessCatageory">
+              <MappingFragment StoreEntitySet="BusinessCatageory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessSubCatageories">
+            <EntityTypeMapping TypeName="BussinessBookingModel.BusinessSubCatageory">
+              <MappingFragment StoreEntitySet="BusinessSubCatageory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="BussinessCatageoryId" ColumnName="BussinessCatageoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="BussinessBookingModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Alpha1" ColumnName="Alpha1" />
+                <ScalarProperty Name="Alpha2" ColumnName="Alpha2" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="BussinessBookingModel.Currency">
+              <MappingFragment StoreEntitySet="Currency">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer_SubCatageory">
+            <EntityTypeMapping TypeName="BussinessBookingModel.Customer_SubCatageory">
+              <MappingFragment StoreEntitySet="Customer_SubCatageory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="SubCatageoryId" ColumnName="SubCatageoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerBusinessDetails">
+            <EntityTypeMapping TypeName="BussinessBookingModel.CustomerBusinessDetail">
+              <MappingFragment StoreEntitySet="CustomerBusinessDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SRIET" ColumnName="SRIET" />
+                <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
+                <ScalarProperty Name="APE" ColumnName="APE" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerContacts">
+            <EntityTypeMapping TypeName="BussinessBookingModel.CustomerContact">
+              <MappingFragment StoreEntitySet="CustomerContact">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Telephone1" ColumnName="Telephone1" />
+                <ScalarProperty Name="Telephone2" ColumnName="Telephone2" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="BussinessEmail" ColumnName="BussinessEmail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerDetails">
+            <EntityTypeMapping TypeName="BussinessBookingModel.CustomerDetail">
+              <MappingFragment StoreEntitySet="CustomerDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BussinessName" ColumnName="BussinessName" />
+                <ScalarProperty Name="BussinessWebsite" ColumnName="BussinessWebsite" />
+                <ScalarProperty Name="BusinessCatageoryId" ColumnName="BusinessCatageoryId" />
+                <ScalarProperty Name="SubCatageoryNo" ColumnName="SubCatageoryNo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerGalleries">
+            <EntityTypeMapping TypeName="BussinessBookingModel.CustomerGallery">
+              <MappingFragment StoreEntitySet="CustomerGallery">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Image1" ColumnName="Image1" />
+                <ScalarProperty Name="Image2" ColumnName="Image2" />
+                <ScalarProperty Name="Image3" ColumnName="Image3" />
+                <ScalarProperty Name="Image4" ColumnName="Image4" />
+                <ScalarProperty Name="Image5" ColumnName="Image5" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerLocations">
+            <EntityTypeMapping TypeName="BussinessBookingModel.CustomerLocation">
+              <MappingFragment StoreEntitySet="CustomerLocation">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="IntervensionZone" ColumnName="IntervensionZone" />
+                <ScalarProperty Name="Radius" ColumnName="Radius" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerRegions">
+            <EntityTypeMapping TypeName="BussinessBookingModel.CustomerRegion">
+              <MappingFragment StoreEntitySet="CustomerRegion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="CurrencyId" ColumnName="CurrencyId" />
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="DateFormate" ColumnName="DateFormate" />
+                <ScalarProperty Name="TimeFormate" ColumnName="TimeFormate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="BussinessBookingModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+                <ScalarProperty Name="BussinessID" ColumnName="BussinessID" />
+                <ScalarProperty Name="GalleryID" ColumnName="GalleryID" />
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="SmsID" ColumnName="SmsID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="WorkingID" ColumnName="WorkingID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerSMS">
+            <EntityTypeMapping TypeName="BussinessBookingModel.CustomerSM">
+              <MappingFragment StoreEntitySet="CustomerSMS">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PackageID" ColumnName="PackageID" />
+                <ScalarProperty Name="RemainingSMS" ColumnName="RemainingSMS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerTypes">
+            <EntityTypeMapping TypeName="BussinessBookingModel.CustomerType">
+              <MappingFragment StoreEntitySet="CustomerType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="SingleorMulti" ColumnName="SingleorMulti" />
+                <ScalarProperty Name="MultiNumber" ColumnName="MultiNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="BussinessBookingModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NickName" ColumnName="NickName" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="SMSNumber" ColumnName="SMSNumber" />
+                <ScalarProperty Name="BookingSMS" ColumnName="BookingSMS" />
+                <ScalarProperty Name="BookingMail" ColumnName="BookingMail" />
+                <ScalarProperty Name="ThaiMessage" ColumnName="ThaiMessage" />
+                <ScalarProperty Name="CalliforniaMessage" ColumnName="CalliforniaMessage" />
+                <ScalarProperty Name="WorkingPlace" ColumnName="WorkingPlace" />
+                <ScalarProperty Name="AgencyCheck1" ColumnName="AgencyCheck1" />
+                <ScalarProperty Name="AgencyCheck2" ColumnName="AgencyCheck2" />
+                <ScalarProperty Name="WorkingId" ColumnName="WorkingId" />
+                <ScalarProperty Name="CelenderSync" ColumnName="CelenderSync" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Expires">
+            <EntityTypeMapping TypeName="BussinessBookingModel.Expire">
+              <MappingFragment StoreEntitySet="Expire">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="Every" ColumnName="Every" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GiftVouchers">
+            <EntityTypeMapping TypeName="BussinessBookingModel.GiftVoucher">
+              <MappingFragment StoreEntitySet="GiftVoucher">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sku" ColumnName="Sku" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="RedmeeOnline" ColumnName="RedmeeOnline" />
+                <ScalarProperty Name="Voided" ColumnName="Voided" />
+                <ScalarProperty Name="ExpireId" ColumnName="ExpireId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Invoices">
+            <EntityTypeMapping TypeName="BussinessBookingModel.Invoice">
+              <MappingFragment StoreEntitySet="Invoice">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="InvoiceDate" ColumnName="InvoiceDate" />
+                <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+                <ScalarProperty Name="Ammount" ColumnName="Ammount" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="BussinessBookingModel.Item">
+              <MappingFragment StoreEntitySet="Item">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Vat" ColumnName="Vat" />
+                <ScalarProperty Name="Price_W_O_Vat" ColumnName="Price_W/O_Vat" />
+                <ScalarProperty Name="Price_W__Vat" ColumnName="Price_W/_Vat" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Services">
+            <EntityTypeMapping TypeName="BussinessBookingModel.Service">
+              <MappingFragment StoreEntitySet="Service">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Service_Group">
+            <EntityTypeMapping TypeName="BussinessBookingModel.Service_Group">
+              <MappingFragment StoreEntitySet="Service_Group">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ServiceID" ColumnName="ServiceID" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServiceGroups">
+            <EntityTypeMapping TypeName="BussinessBookingModel.ServiceGroup">
+              <MappingFragment StoreEntitySet="ServiceGroup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Socials">
+            <EntityTypeMapping TypeName="BussinessBookingModel.Social">
+              <MappingFragment StoreEntitySet="Social">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+                <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="BussinessBookingModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WorkingTimes">
+            <EntityTypeMapping TypeName="BussinessBookingModel.WorkingTime">
+              <MappingFragment StoreEntitySet="WorkingTime">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="isoff" ColumnName="isoff" />
+                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+                <ScalarProperty Name="LunchFrom" ColumnName="LunchFrom" />
+                <ScalarProperty Name="LunchToo" ColumnName="LunchToo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,136 @@
+﻿@model BookingApplication.Models.Employee
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NickName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NickName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SMSNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SMSNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingSMS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingSMS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BookingMail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BookingMail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThaiMessage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThaiMessage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CalliforniaMessage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CalliforniaMessage)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkingPlace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkingPlace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgencyCheck1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgencyCheck1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgencyCheck2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgencyCheck2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CelenderSync)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CelenderSync)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkingTime.Day)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkingTime.Day)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
